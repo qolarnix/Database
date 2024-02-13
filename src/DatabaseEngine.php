@@ -18,12 +18,13 @@ class DatabaseEngine {
         if($this->config['type'] === 'sqlite') {
             $platform = new SQLitePlatform();
             $driver = 'pdo_mysql';
+            
+            $conn_params = [
+                'driver' => $driver,
+                'path' => $this->config['path'],
+                'platform' => $platform,
+            ];
         }
-        $conn_params = [
-            'driver' => $driver,
-            'path' => $this->config['path'],
-            'platform' => $platform,
-        ];
         return DriverManager::getConnection($conn_params);
     }
 }
