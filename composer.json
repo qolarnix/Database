@@ -1,0 +1,20 @@
+{
+    "name": "glacial/database",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "polarnix",
+            "email": "polarnix@protonmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Glacial\\Database\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.2.10",
+        "doctrine/dbal": "^4.0"
+    }
+}
