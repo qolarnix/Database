@@ -6,9 +6,10 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
     'type' => 'sqlite',
-    'path' => 'database.sqlite',
+    'path' => __DIR__ . '/examples/database.sqlite',
 ];
-$database = new DatabaseEngine($config);
-$conn = $database->connect();
+$db = new DatabaseEngine($config);
 
-print_r($conn);
+$manager = $db->connect();
+
+print_r($manager->schema());
