@@ -46,7 +46,7 @@ class Manager {
     public function table(string $name, callable $callback) {
         $table = new Table($name);
 
-        $callback();
+        $callback($table);
 
         $this->conn->createTable($table);
     }
