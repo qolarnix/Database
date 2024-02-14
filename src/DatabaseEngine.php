@@ -43,7 +43,7 @@ class Manager {
         return $this;
     }
 
-    public function table(string $name) {
+    public function table(string $name, callable $callback) {
         $table = new Table($name);
         $this->conn->createTable($table);
     }
