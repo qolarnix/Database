@@ -38,8 +38,13 @@ class Manager {
     }
 
     public function schema() {
-        $conn = $this->conn;
-        $this->conn = $conn->createSchemaManager();
-        return $this->conn;
+        $schemaManager = $this->conn->createSchemaManager();
+        $this->conn = $schemaManager;
+        return $this;
+    }
+
+    public function table(string $name) {
+        $table = new Table($name);
+        $this->conn->createTable($table);
     }
 }

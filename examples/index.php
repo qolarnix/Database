@@ -15,4 +15,4 @@ $conn = $db->connect();
 
 $manager = new Manager($conn);
 
-print_r($manager->schema());
+$manager->schema()->table('users');
