@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Table;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-class DatabaseEngine extends Manager {
+class DatabaseEngine {
     private array $config;
 
     function __construct(array $config) {
@@ -26,14 +26,12 @@ class DatabaseEngine extends Manager {
                 'platform' => $platform,
             ];
         }
-        $conn = DriverManager::getConnection($conn_params);
-        return new Manager($conn);
+        return DriverManager::getConnection($conn_params);
     }
 }
 
 class Manager {
     private object $conn;
-    public object $schemaManager;
 
     function __construct(object $conn) {
         $this->conn = $conn;
@@ -41,7 +39,7 @@ class Manager {
 
     public function schema() {
         $conn = $this->conn;
-        $this->schemaManager = $conn->createSchemaManager();
-        return $this->schemaManager;
+        $this->conn = $conn->createSchemaManager();
+        return $this->conn;
     }
 }

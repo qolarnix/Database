@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use Glacial\Database\DatabaseEngine;
+use Glacial\Database\Manager;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -10,6 +11,8 @@ $config = [
 ];
 $db = new DatabaseEngine($config);
 
-$manager = $db->connect();
+$conn = $db->connect();
+
+$manager = new Manager($conn);
 
 print_r($manager->schema());
