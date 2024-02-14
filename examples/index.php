@@ -16,5 +16,5 @@ $conn = $db->connect();
 $manager = new Manager($conn);
 
 $manager->schema()->table('users', function($t) {
-
+    $t->addColumn('id', 'integer');
 });
